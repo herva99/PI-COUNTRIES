@@ -1,9 +1,10 @@
 const { Country, Activity } = require("../db");
-
 const createActivity = async (name, difficulty, duration, season, countryId) => {
-  const newActivity = await Activity.create({ name, difficulty, duration, season});
+  const newActivity = await Activity.create({ name, difficulty, duration, season });
   const country = await Country.findByPk(countryId);
-  await newActivity.setCountries(country);
+  if (country) {
+    await newActivity.addCountry(country);
+  }
   return newActivity;
 };
 const getActivity = async () => {

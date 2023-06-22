@@ -1,9 +1,5 @@
 const {getCountryDb, getCountryByName, getCountryId}= require("../controllers/getCountries")
 
-//los Handlers utilizan a los controllers y envian una
-// respuesta adecuada(esto puede ser lo que hayan solicitado o un mensaje de error)
-
-
 const getAllCountries = async (req, res) => {
     try {
       const response = await getCountryDb();
@@ -26,7 +22,6 @@ const getCountriesByNameHandler= async(req, res) =>{
     res.status(200).json({ error: error.message} )
     }
   };
-
 const getCountriesIdHandler= async(req, res)=>{
     const{id}= req.params;
     try{
@@ -35,7 +30,7 @@ const getCountriesIdHandler= async(req, res)=>{
     } catch(error){
     res.status(200).json({error: error.message})
     }
-  }
+  };
 
 
 

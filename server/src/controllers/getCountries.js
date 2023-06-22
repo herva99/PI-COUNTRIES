@@ -8,6 +8,7 @@ const { Country, Activity } = require("../db");
 
 
 const getCountryDb = async () => {
+  await getCountryApi()
   const countriesAll = await Country.findAll({
     include: {
       model: Activity,
@@ -22,7 +23,7 @@ const getCountryDb = async () => {
 };                    
 
 const getCountryByName = async (name) => {
-  const allCountries = await getCountryApi();
+  const allCountries = await getCountryDb();
   
   if (name) {
     const countryByName = allCountries.filter((c) =>
@@ -39,13 +40,11 @@ const getCountryByName = async (name) => {
 };
 
 const getCountryId = async (id) => {
-  const allCountries = await getCountryApi();
-  
   if (id) {
     const countryId = await Country.findByPk(id.toUpperCase(), {
       include: {
         model: Activity,
-        attributes: ['name'],
+        attributes: ['name', 'difficulty', 'duration', 'season'],
         through: {
           attributes: [],
         },
@@ -53,11 +52,15 @@ const getCountryId = async (id) => {
     });
     if (countryId) {
       return countryId;
+    } else {
+      throw new Error("No se encontró un país con ese ID");
     }
   } else {
+    const allCountries = await getCountryDb();
     return allCountries;
   }
 };
+
 
 
 module.exports = {

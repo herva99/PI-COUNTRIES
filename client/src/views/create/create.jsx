@@ -49,14 +49,14 @@ export default function Create() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const validationError = validate();
-
+  
     if (Object.keys(validationError).length === 0) {
       try {
-        const newActivity = await dispatch(createActivity(input));
-
+        const countryId = input.country; 
+        const newActivity = await dispatch(createActivity(input, countryId));
+  
         if (newActivity) {
           alert("Actividad creada exitosamente");
-          // Restablecer el formulario
           setInput({
             name: "",
             difficulty: "",
@@ -64,7 +64,6 @@ export default function Create() {
             season: "",
             country: "",
           });
-          // Actualizar la lista de países para mostrar las actividades asociadas
           dispatch(getCountries());
         } else {
           alert("Error al crear la actividad");
@@ -77,6 +76,7 @@ export default function Create() {
       alert("Faltan Datos");
     }
   };
+  
 
   return (
     <div>

@@ -41,10 +41,14 @@ export default function CardList({ allCountries, sortOrder, selectedContinent, s
     };
   
     return (
-      <div className="card-list">
+      <div >
+        <div className="card-list">
         {currentCards.map((countries, index) => (
           <Cards key={index} countries={countries} />
         ))}
+       
+        </div>
+        <hr/>
         <Pagination
           cardsPerPage={cardsPerPage}
           totalCards={sortedCountries.length}

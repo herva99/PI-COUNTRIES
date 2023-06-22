@@ -5,10 +5,6 @@ import CardList from "../../componentes/cardList/cardList"
 import {getCountries, getCountriesByName}  from "../../redux/actions" 
 import { Link } from "react-router-dom";
 import "./home.styles.css"
-
-
-
-
 export default function Home() {
     const dispatch = useDispatch();
     const allCountries = useSelector((state) => state.allCountries);
@@ -17,7 +13,6 @@ export default function Home() {
     const [selectedContinent, setSelectedContinent] = useState("");
     const [showAllCountries, setShowAllCountries] = useState(true);
     
-  
     const toggleSortOrderAsc = () => {
       setSortOrder("asc");
     };
@@ -55,19 +50,25 @@ export default function Home() {
       <div className="home">
         <h1 className="home-title">ESTAS EN EL HOME</h1>
         <NavBar handleSubmit={handleSubmit} handleChange={handleChange} />
+        <Link to="/">
+          <button>Inicio</button>
+        </Link>
         <Link to="/create">
               <button>Crear Actividad</button>
         </Link>
         <button onClick={handleShowAllCountries}>Mostrar todos los países</button>
+        <div>
         <button onClick={toggleSortOrderAsc}>Orden Ascendente</button>
         <button onClick={toggleSortOrderDesc}>Orden Descendente</button>
+        </div>
+        <div>
         <button onClick={() => handleContinentFilter("Europe")}>Filtrar por Europa</button>
         <button onClick={() => handleContinentFilter("Asia")}>Filtrar por Asia</button>
         <button onClick={() => handleContinentFilter("Americas")}>Filtrar por America</button>
         <button onClick={() => handleContinentFilter("Africa")}>Filtrar por Africa</button>
         <button onClick={() => handleContinentFilter("Antarctic")}>Filtrar por Antartica</button>
         <button onClick={() => handleContinentFilter("Oceania")}>Filtrar por Oceania</button>
-        
+        </div>
         <CardList
           allCountries={allCountries}
           sortOrder={sortOrder}
