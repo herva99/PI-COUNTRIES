@@ -13,12 +13,6 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull:false,
         unique:true,
-        validate: {
-            len: {
-              args: [3, 30],
-              msg:"el nombre debe contener entre 3 y 30 caracteres"
-            }
-          },
     },
     difficulty: {
         type: DataTypes.ENUM('1', '2', '3', '4', '5'),
@@ -29,8 +23,8 @@ module.exports = (sequelize) => {
         allowNull: true
     },
     season: {
-        type: DataTypes.ENUM('Summer', 'Autumn', 'Winter', 'Spring'),
+        type: DataTypes.ENUM('verano', 'otoño', 'invierno', 'primavera'),
         allowNull:false
     }
-    }, {timestamp: false});
+    });
   }; 

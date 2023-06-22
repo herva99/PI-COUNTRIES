@@ -1,3 +1,4 @@
+/*
 const axios = require("axios");
 const {Country, Activity}= require("../db");
 
@@ -92,6 +93,6 @@ const getCountryId= async(id)=>{
         return allCountries
     }
 }
-
+*/
 
 //////////////////////////////////

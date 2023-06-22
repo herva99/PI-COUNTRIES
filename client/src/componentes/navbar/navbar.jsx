@@ -6,6 +6,7 @@ export default function NavBar({handleSubmit, handleChange}) {
             <form className="search-box">
                 <input onChange={handleChange} placeholder="Buscador"/>
                 <button onClick={handleSubmit} className="button">Buscar</button>
+                
             </form>
         </div>
     )

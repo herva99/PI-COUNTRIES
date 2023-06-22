@@ -1,12 +1,14 @@
+import { Link } from "react-router-dom"
+import "./landing.styles.css"
 export default function Landing(){
     return (
-        <div>
-            <div >
+        <div className="landing">
+            <div>
                 <h1>¡Welcome To The Individual Project Of Henry Countries!</h1>
                 <h2>Developed by Hernán Vázquez</h2>
-                <NavLink to="/home">
+                <Link to="/home">
                 <button>HOME</button>
-                </NavLink>
+                </Link>
             </div>
         </div>
 

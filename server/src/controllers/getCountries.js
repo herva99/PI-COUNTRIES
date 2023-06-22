@@ -8,8 +8,6 @@ const { Country, Activity } = require("../db");
 
 
 const getCountryDb = async () => {
-  const allCountries = await getCountryApi();
-  
   const countriesAll = await Country.findAll({
     include: {
       model: Activity,
@@ -21,7 +19,7 @@ const getCountryDb = async () => {
   });
 
   return countriesAll;
-};
+};                    
 
 const getCountryByName = async (name) => {
   const allCountries = await getCountryApi();
@@ -53,7 +51,6 @@ const getCountryId = async (id) => {
         },
       },
     });
-    
     if (countryId) {
       return countryId;
     }
@@ -61,6 +58,7 @@ const getCountryId = async (id) => {
     return allCountries;
   }
 };
+
 
 module.exports = {
   getCountryDb,

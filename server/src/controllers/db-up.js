@@ -1,6 +1,5 @@
 const axios = require("axios");
 const { Country } = require("../db");
-
 const URL = "https://rest-countries.up.railway.app/v3/all";
 
 const getCountryApi = async () => {
